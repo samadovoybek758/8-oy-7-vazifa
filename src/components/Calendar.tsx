@@ -79,7 +79,7 @@ const Calendar: React.FC = () => {
 
   return (
     <>
-        <div className="p-4 bg-white rounded-lg shadow-lg  mx-auto max-w-[1400px]">
+        <div className="p-4 bg-white rounded-lg shadow-lg  mx-auto max-w-[900px]">
       <div className="flex justify-between items-center mb-4">
         <FontAwesomeIcon icon={faArrowLeft}  onClick={() => changeMonth(-1)} />
         <h2 className="text-xl font-semibold text-gray-400">
