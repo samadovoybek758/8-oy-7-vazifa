@@ -17,7 +17,7 @@ const Calendar: React.FC = () => {
     "Iyul", "Avgust", "Sentabr", "Oktyabr", "Noyabr", "Dekabr"
   ];
   
-  const Weeks: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const Weeks: string[] = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
 
   const getDaysInMonth = (month: number, year: number): number[] => {
     const date = new Date(year, month, 0);
@@ -47,6 +47,9 @@ const Calendar: React.FC = () => {
     title: string,
     day: string
   }
+  
+
+  
 
   function save() {
 
@@ -81,11 +84,11 @@ const Calendar: React.FC = () => {
     <>
         <div className="p-4 bg-white rounded-lg shadow-lg  mx-auto max-w-[900px]">
       <div className="flex justify-between items-center mb-4">
-        <FontAwesomeIcon icon={faArrowLeft}  onClick={() => changeMonth(-1)} />
+        <FontAwesomeIcon icon={faArrowLeft} className='cursor-pointer'  onClick={() => changeMonth(-1)} />
         <h2 className="text-xl font-semibold text-gray-400">
           {months[year.getMonth()]} {year.getFullYear()}
         </h2>
-        <FontAwesomeIcon icon={faArrowRight}  onClick={() => changeMonth(1)} />
+        <FontAwesomeIcon icon={faArrowRight} className='cursor-pointer' onClick={() => changeMonth(1)} />
       </div>
 
       <div className="grid grid-cols-7 gap-2 text-center">
@@ -105,14 +108,14 @@ const Calendar: React.FC = () => {
         ))}
         
       </div>
-      <button onClick={openModal} className='bg-black text-white rounded-md px-5 mt-3 py-1'>Add Event</button>
+      <button onClick={openModal} className='bg-black text-white rounded-md px-5 mt-3 font-semibold py-2'>Add Event</button>
     </div>
 
     <div className='max-w-[600px] mt-4  text-white flex flex-col p-4 rounded-md mx-auto gap-2'>
         {
-            titleData.length > 0 && titleData.map(function (value) {
+            titleData.length > 0 && titleData.map(function (value, index) {
                 return(
-                    <div className='border border-solid px-2 py-1 border-blue-400 rounded-md '>
+                    <div key={index} className='border border-solid px-2 py-1 border-blue-400 rounded-md '>
                         <h1>{value.title}</h1>
                         <span>{value.day.slice(0,10)}</span>
                         <span className='ml-2'>{value.day.slice(11,20)}</span>
@@ -135,7 +138,7 @@ const Calendar: React.FC = () => {
           >
             <div className='flex justify-between'>
             <h2 className="text-xs font-semibold">Add New Event</h2>
-            <FontAwesomeIcon onClick={closeModal} width={5} height={5} icon={faX} />
+            <FontAwesomeIcon onClick={closeModal} className='cursor-pointer' width={7} height={7} icon={faX} />
             </div>
             <div className='flex gap-2 mt-2'>
                 <label htmlFor="title">Title</label>
